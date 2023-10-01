@@ -41,6 +41,7 @@ To run the ETL process, follow these steps:
 - installing pykafka for Python:
 pip install pykafka
 - Start the Kafka cluster:
+
 __Step 1__: Open command prompt and change the directory to the kafka folder. First start zookeeper using the command given below:
 
 .\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
