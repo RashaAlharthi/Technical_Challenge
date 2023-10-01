@@ -3,7 +3,7 @@
 This project implements an ETL process for scraping news websites, publishing the scraped articles to Kafka, transforming the data format, and loading it into a MySQL database and MinIO.
 
 ## Architecture Diagram
-![image.jpeg](Architecture Diagram.jpeg)
+![Architecture Diagram.jpeg](https://github.com/RashaAlharthi/Technical_Challenge/blob/4811d5040e0fa15f430cf2a703b9d4d4f8262aab/Architecture%20Diagram.jpeg)
 ### Data Sources
 The following news websites are scraped:
 - Al Jazeera
