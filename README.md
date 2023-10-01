@@ -42,21 +42,21 @@ To run the ETL process, follow these steps:
 pip install pykafka
 - Start the Kafka cluster:
 
-__Step 1__: Open command prompt and change the directory to the kafka folder. First start zookeeper using the command given below:
-
-.\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
-
-__Step 2__: Now open another command prompt and change the directory to the Kafka folder. Run Kafka server using the command:
-
-.\bin\windows\kafka-server-start.bat .\config\server.properties
+    __Step 1__: Open command prompt and change the directory to the kafka folder. First start zookeeper using the command given below:
+    
+    .\bin\windows\zookeeper-server-start.bat .\config\zookeeper.properties
+    
+    __Step 2__: Now open another command prompt and change the directory to the Kafka folder. Run Kafka server using the command:
+    
+    .\bin\windows\kafka-server-start.bat .\config\server.properties
 
 - Creating a Kafka Topic:
 
-__Step 1__: Open a new command prompt in the location C:\kafka\bin\windows.
-
-__Step 2__: Run the following command:
-
-kafka-topics.bat --create --topic quickstart-events --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --
+    __Step 1__: Open a new command prompt in the location C:\kafka\bin\windows.
+    
+    __Step 2__: Run the following command:
+    
+    kafka-topics.bat --create --topic quickstart-events --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --
 
 3. Run the Scrapy Spider:
 scrapy startproject news_scraper
