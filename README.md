@@ -2,6 +2,8 @@
 ### Project name: ETL Process for Scraping News Websites
 This project implements an ETL process for scraping news websites, publishing the scraped articles to Kafka, transforming the data format, and loading it into a MySQL database and MinIO.
 
+## Architecture Diagram
+![image.jpeg](Architecture Diagram.jpeg)
 ### Data Sources
 The following news websites are scraped:
 - Al Jazeera
