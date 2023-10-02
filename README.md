@@ -42,7 +42,7 @@ __5. Automation__
 ## Next Step:
 
 - Run Airflow and Kafka in Docker containers. This would allow running them on both Linux and Windows.
-- Add more transformations for the data, such as converting the publication date to a Unix timestamp, and cleaning/stripping the content of HTML tags.
+- Add more transformations for the data, such as converting the publication date to a Unix timestamp, and cleaning the content of any special character.
 - Implement pagination and crawling for multiple pages in the scraper.
 
 # Running the ETL Process
