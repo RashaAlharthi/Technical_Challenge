@@ -55,7 +55,7 @@ To run the ETL process, follow these steps:
   - MySQL -->  An open-source relational database management system. Download the (mysql-installer-community-8.0.34.0.msi) from their official site https://dev.mysql.com/downloads/installer/
   - MinIO -->  An open-source object storage server. Download the exe file from this link: https://dl.min.io/server/minio/release/windows-amd64/minio.exe
 
-2. setting up Kafka:
+__2. setting up Kafka:__
   - installing pykafka for Python:
   pip install pykafka
   - Start the Kafka cluster:
@@ -76,18 +76,18 @@ To run the ETL process, follow these steps:
       
       kafka-topics.bat --create --topic quickstart-events --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --
 
-3. Run the Scrapy Spider:
+__3. Run the Scrapy Spider:__
     scrapy startproject news_scraper
 
-4. Run the following command:
+__4. Run the following command:__
     scrapy crawl SPIDER_NAME
 
-5. Create a database & table for MySQL
+__5. Create a database & table for MySQL__
 
-7. Create a Bucket for Minio
+__7. Create a Bucket for Minio__
 
-8. Start the connection with MySQL & Minio, then run the Kafka consumer
-9. Verify that the data is being loaded into the MySQL database and MinIO:
+__8. Start the connection with MySQL & Minio, then run the Kafka consumer__
+__9. Verify that the data is being loaded into the MySQL database and MinIO:__
   - Open the MySQL database and query the news_tb table.
   - Open the MinIO bucket called scraped-news and view the JSON files.
 
