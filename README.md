@@ -9,16 +9,16 @@ This project implements an ETL process for scraping news websites, publishing th
 __1. Web Scraping__
 
 - There are 4 spiders in this project to scrap the following websites:
-* Al Jazeera
-* BBC
-* Reuters
-* Sky News
+   * Al Jazeera
+   * BBC
+   * Reuters
+   * Sky News
 - The spiders extract relevant information from each article, such as:
-* Title
-* Publication date
-* Content/Summary
-* Link to the article
-* Source
+   * Title
+   * Publication date
+   * Content/Summary
+   * Link to the article
+   * Source
 - For now, the scraper doesn't do pagination and crawling for multiple pages, to simplify the testing of the code and output that running many times.
 
 __2. Kafka Integration__
@@ -36,6 +36,7 @@ __4. SQL Data Warehouse__
 __5. Automation__
 - Create a DAG file for Apache Airflow to trigger the web scraping process at regular intervals.
 - Ensure that the automation considers fault tolerance and error handling.
+
   **_Note:_** Currently, the automation cannot run the tasks due to the different operating systems that run Kafka (Airflow in Linux and Kafka in Windows), and the fact that the scrapy pipeline should run Kafka first to publish the messages.
 
 ## Next Step:
