@@ -1,43 +1,58 @@
 # Technical_Challenge
-### Project name: ETL Process for Scraping News Websites
+## ETL Process for Scraping News Websites
 This project implements an ETL process for scraping news websites, publishing the scraped articles to Kafka, transforming the data format, and loading it into a MySQL database and MinIO.
 
 ## Architecture Diagram
 ![Architecture Diagram.jpeg](https://github.com/RashaAlharthi/Technical_Challenge/blob/4811d5040e0fa15f430cf2a703b9d4d4f8262aab/Architecture%20Diagram.jpeg)
-### Data Sources
-The following news websites are scraped:
-- Al Jazeera
-- BBC
-- Reuters
-- Sky News
 
-### Data Extraction
-The following information is extracted from each article:
-- Title
-- Publication date
-- Content/Summary
-- Source
+## Project Steps
+__1. Web Scraping__
 
-### Data Transformation
-for now, it only transforms the data format to ensure it loads successfully, But I will add more transformations like:
+- There are 4 spiders in this project to scrap the following websites:
+* Al Jazeera
+* BBC
+* Reuters
+* Sky News
+- The spiders extract relevant information from each article, such as:
+* Title
+* Publication date
+* Content/Summary
+* Link to the article
+* Source
+- For now, the scraper doesn't do pagination and crawling for multiple pages, to simplify the testing of the code and output that running many times.
 
-- Convert the publication date to a Unix timestamp.
-- clean and strip the content of HTML tags.
+__2. Kafka Integration__
+- Implement a Kafka producer to publish each scraped news article as a message to a Kafka topic.
+- Use Scrapy's pipeline to send each article to Kafka one at a time.
 
-### Data Loading
-The transformed data is loaded into the following destinations:
-- MySQL database: The data is loaded into a table called news_tb.
-- MinIO: The data is loaded as a JSON file into a bucket called scraped-news.
+__3. MinIO Object Storage__
+- Store the scraped news articles as JSON objects in a MinIO bucket called "scraped-news".
+- Implement error handling and retries to ensure reliable storage of data.
 
-## Running the ETL Process
+__4. SQL Data Warehouse__
+- Create an ETL process that reads the news articles from Kafka, transforms them into the desired format, and loads them into the SQL database.
+- Each message that comes from Kafka Consumer will be transformed to the right format to be loaded successfully in the SQL database table called news_tb.
+
+__5. Automation__
+- Create a DAG file for Apache Airflow to trigger the web scraping process at regular intervals.
+- Ensure that the automation considers fault tolerance and error handling.
+  **_Note:_** Currently, the automation cannot run the tasks due to the different operating systems that run Kafka (Airflow in Linux and Kafka in Windows), and the fact that the scrapy pipeline should run Kafka first to publish the messages.
+
+## Next Step:
+
+- Run Airflow and Kafka in Docker containers. This would allow running them on both Linux and Windows.
+- Add more transformations for the data, such as converting the publication date to a Unix timestamp, and cleaning/stripping the content of HTML tags.
+- Implement pagination and crawling for multiple pages in the scraper.
+
+# Running the ETL Process
 To run the ETL process, follow these steps:
 
 1. Install the required dependencies:
-- Python
-- Scrapy --> using Python pip install scrapy
-- Kafka --> Apache Kafka can be downloaded from its official site: https://kafka.apache.org/downloads
-- MySQL --> The (mysql-installer-community-8.0.34.0.msi) from their official site https://dev.mysql.com/downloads/installer/
-- MinIO --> Download the exe file from this link: https://dl.min.io/server/minio/release/windows-amd64/minio.exe
+- Python 3.8 or higher
+- Scrapy --> A Python library for web scraping, can be installed using Python pip install scrapy
+- Kafka --> Apache Kafka is a distributed streaming platform. It can be downloaded from its official site: https://kafka.apache.org/downloads
+- MySQL -->  An open-source relational database management system. Download the (mysql-installer-community-8.0.34.0.msi) from their official site https://dev.mysql.com/downloads/installer/
+- MinIO -->  An open-source object storage server. Download the exe file from this link: https://dl.min.io/server/minio/release/windows-amd64/minio.exe
 
 2. setting up Kafka:
 - installing pykafka for Python:
