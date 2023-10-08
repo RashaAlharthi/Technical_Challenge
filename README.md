@@ -87,6 +87,7 @@ __5. Create a database & table for MySQL__
 __7. Create a Bucket for Minio__
 
 __8. Start the connection with MySQL & Minio, then run the Kafka consumer__
+
 __9. Verify that the data is being loaded into the MySQL database and MinIO:__
   - Open the MySQL database and query the news_tb table.
   - Open the MinIO bucket called scraped-news and view the JSON files.
